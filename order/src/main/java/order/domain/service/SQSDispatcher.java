@@ -33,5 +33,4 @@ public class SQSDispatcher {
     this.sqs.sendMessage(this.queue,this.objectMapper.writeValueAsString(order));
   }
 
-
 }

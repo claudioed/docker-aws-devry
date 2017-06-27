@@ -1,2 +1,6 @@
 server:
   port: 8000
+
+order:
+  queue: ${ORDER_QUEUE}
+  bucket: ${ORDER_BUCKET}

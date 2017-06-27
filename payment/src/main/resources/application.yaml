@@ -1,2 +1,9 @@
 server:
   port: 8001
+
+payment:
+  queue: ${PAYMENT_QUEUE}
+  bucket: ${PAYMENT_BUCKET}
+
+order:
+  queue: ${ORDER_QUEUE}
