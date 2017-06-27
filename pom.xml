@@ -10,6 +10,7 @@
   <modules>
     <module>order</module>
     <module>payment</module>
+      <module>product</module>
   </modules>
   <packaging>pom</packaging>
 

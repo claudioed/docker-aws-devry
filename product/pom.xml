@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>payment</artifactId>
+    <artifactId>product</artifactId>
 
     <properties>
         <docker-maven-plugin.version>0.21.0</docker-maven-plugin.version>
@@ -62,31 +62,11 @@
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-sns</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-sqs</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-s3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-dynamodb</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
 
-        <finalName>payment</finalName>
+        <finalName>product</finalName>
 
         <plugins>
 
@@ -111,10 +91,10 @@
                 <configuration>
                     <images>
                         <image>
-                            <name>claudioed/docker-aws-devry-payment</name>
+                            <name>claudioed/docker-aws-devry-product</name>
                             <build>
                                 <from>openjdk:latest</from>
-                                <entryPoint>java -jar /application/${project.build.finalName}.jar</entryPoint>
+                                <entryPoint>java -jar /application/${project.build.finalName}.jar </entryPoint>
                                 <assembly>
                                     <basedir>/application</basedir>
                                     <descriptorRef>artifact</descriptorRef>
@@ -132,7 +112,7 @@
                                     <tag>latest</tag>
                                 </tags>
                                 <ports>
-                                    <port>8001</port>
+                                    <port>8002</port>
                                 </ports>
                             </build>
                             <run>
