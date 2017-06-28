@@ -4,3 +4,13 @@ server:
 order:
   queue: ${ORDER_QUEUE}
   bucket: ${ORDER_BUCKET}
+
+payment:
+  queue: ${PAYMENT_QUEUE}
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+

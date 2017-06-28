@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.NonNull;
 import order.domain.model.Order;
+import order.domain.model.OrderStatus;
 import order.domain.repository.OrderRepository;
 import order.domain.resource.model.NewOrder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,12 @@ public class OrderService {
     final Iterable<Order> orders1 = this.orderRepository.findAll();
     orders1.forEach(orders::add);
     return orders;
+  }
+
+  public Order updateStatus(@NonNull OrderStatus orderStatus){
+    final Order order = this.orderRepository.findOne(orderStatus.getId());
+    order.setStatus(orderStatus.getStatus());
+    return this.orderRepository.save(order);
   }
 
   public Order byId(@NonNull String id){

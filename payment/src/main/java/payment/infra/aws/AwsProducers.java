@@ -4,6 +4,7 @@ import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.sns.AmazonSNS;
@@ -48,6 +49,11 @@ public class AwsProducers {
   @Bean
   public AmazonDynamoDB amazonDynamoDB() {
     return AmazonDynamoDBClientBuilder.standard().withCredentials(new EnvironmentVariableCredentialsProvider()).withRegion(Regions.US_EAST_1).build();
+  }
+
+  @Bean
+  public DynamoDBMapper dynamoDBMapper() {
+    return new DynamoDBMapper(amazonDynamoDB());
   }
 
   @Bean(name = "paymentQueue")

@@ -2,6 +2,7 @@ package order.domain.model;
 
 import java.util.List;
 import java.util.UUID;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
 
   @Id
@@ -25,6 +26,7 @@ public class Order {
 
   String customer;
 
+  @ElementCollection
   List<Item> items;
 
   String status;

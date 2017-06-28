@@ -24,6 +24,9 @@ public class AwsProducers {
   @Value("${order.bucket}")
   private String bucket;
 
+  @Value("${payment.queue}")
+  private String paymentQueue;
+
   @Bean
   public AmazonSNS amazonSNSClient() {
     return AmazonSNSClientBuilder.standard().withCredentials(new EnvironmentVariableCredentialsProvider()).withRegion(
@@ -43,6 +46,11 @@ public class AwsProducers {
   @Bean(name = "orderQueue")
   public String orderQueue(){
     return this.orderQueue;
+  }
+
+  @Bean(name = "paymentQueue")
+  public String paymentQueue(){
+    return this.paymentQueue;
   }
 
   @Bean(name = "bucket")
